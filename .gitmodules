@@ -1,3 +1,4 @@
 [submodule "core/vk"]
 	path = core/vk
 	url = https://github.com/csooriyakumaran/vk
+	branch = master
