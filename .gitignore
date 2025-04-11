@@ -129,4 +129,7 @@ compile_commands
 
 #log files
 
+#cache
+.cache
+
 # End of https://www.toptal.com/developers/gitignore/api/c++,visualstudiocode,c,premake-gmake

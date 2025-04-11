@@ -19,6 +19,7 @@ project "vk-app"
         -- core
         "../../%{IncludeDirs.vk}",
         "../../%{IncludeDirs.vk_gui}",
+        "../../%{IncludeDirs.vk_win}",
 
         -- external dependencies
         "../../%{IncludeDirs.eigen}",

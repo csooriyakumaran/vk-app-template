@@ -19,8 +19,8 @@ IncludeDirs['glfw']   = 'external/glfw/include'
 IncludeDirs['glad']   = 'external/glad/include'
 IncludeDirs['imgui']  = 'external/imgui'
 IncludeDirs['implot'] = 'external/implot'
-IncludeDirs['eigen']  = 'eternal/eigen'
-IncludeDirs['stb']    = 'eternal/stb'
+IncludeDirs['eigen']  = 'external/eigen'
+IncludeDirs['stb']    = 'external/stb'
 
 
 -- external / third-party pre-compiled libraries

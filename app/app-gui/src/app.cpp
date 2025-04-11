@@ -36,19 +36,23 @@ void MainProc::detach()
 void MainProc::update(const double dt)
 {
     //- your application code goes here
-    vk::Application& app = vk::Application::get();
-    app.close();
 }
 
 void MainProc::render()
 {
+    ImGui::ShowDemoWindow();
+
+    
+    // vk::Application& app = vk::Application::get();
+    // app.close();
+
 }
 
 //- this must be implemented in the client application
 vk::Application* vk::create_application(int argc, char** argv)
 {
     //- define the application specification
-    vk::ApplicationSpecifiation spec;
+    vk::ApplicationSpecification ApplicationSpecification;
     spec.title = "My Application";
 
     vk::Application* app = new vk::Application(spec);
