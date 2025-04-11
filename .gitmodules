@@ -2,3 +2,23 @@
 	path = core/vk
 	url = https://github.com/csooriyakumaran/vk
 	branch = master
+[submodule "external/glfw"]
+	path = external/glfw
+	url = https://github.com/glfw/glfw
+	branch = master
+[submodule "external/imgui"]
+	path = external/imgui
+	url = https://github.com/ocornut/imgui
+	branch = docking
+[submodule "external/implot"]
+	path = external/implot
+	url = https://github.com/epezent/implot
+	branch = master
+[submodule "external/stb"]
+	path = external/stb
+	url = https://github.com/nothings/stb
+	branch = master
+[submodule "external/eigen"]
+	path = external/eigen
+	url = https://gitlab.com/libeigen/eigen
+	branch = master
