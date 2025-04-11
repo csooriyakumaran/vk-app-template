@@ -11,6 +11,8 @@ IncludeDirs = {}
 
 -- core libraries
 IncludeDirs['vk'] = 'core/vk/src'
+IncludeDirs['vk_gui'] = 'core/vk/src-platform/gui'
+IncludeDirs['vk_win'] = 'core/vk/src-platform/windows'
 
 -- external libraries
 IncludeDirs['glfw']   = 'external/glfw/include'
@@ -37,7 +39,7 @@ group ''
 
 
 group 'Core'
-    include 'core/vk'
+    include 'core/vk/build-vk-external.lua'
 group ''
 
 
