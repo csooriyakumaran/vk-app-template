@@ -13,8 +13,12 @@ IncludeDirs = {}
 IncludeDirs['vk'] = 'core/vk/src'
 
 -- external libraries
+IncludeDirs['glfw']   = 'external/glfw/include'
+IncludeDirs['glad']   = 'external/glad/include'
 IncludeDirs['imgui']  = 'external/imgui'
 IncludeDirs['implot'] = 'external/implot'
+IncludeDirs['eigen']  = 'eternal/eigen'
+IncludeDirs['stb']    = 'eternal/stb'
 
 
 -- external / third-party pre-compiled libraries
@@ -25,8 +29,10 @@ Library = {}
 
 
 group 'Dependencies'
-    include 'external/imgui'
-    include 'external/implot'
+    include "external/build-glfw.lua"
+    include "external/build-glad.lua"
+    include "external/build-imgui.lua"
+    include "external/build-implot.lua"
 group ''
 
 
@@ -47,11 +53,13 @@ newaction {
         os.rmdir("./bin")
         os.rmdir("./core/vk/bin")
         os.rmdir("./core/moc2/bin")
+        os.rmdir("./external/bin")
         print("Removing object files")
         os.rmdir("./build")
         os.rmdir("./compile_commands")
         os.rmdir("./core/vk/build")
         os.rmdir("./core/moc2/build")
+        os.rmdir("./external/build")
         print("Removing project files")
         os.rmdir("./.vs")
         os.remove("**.sln")
