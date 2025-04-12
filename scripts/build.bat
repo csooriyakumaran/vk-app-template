@@ -7,7 +7,7 @@ IF "%~1" == "clean" GOTO CLEAN
 
 :BUILDDEBUG
 echo Building Source ---- Debug ----
-msbuild .vk-app\.sln /t:Build /p:configuration="Debug" /verbosity:minimal /m:20 || echo ERROR in compilation && exit
+msbuild .\vk-app.sln /t:Build /p:configuration="Debug" /verbosity:minimal /m:20 || echo ERROR in compilation && exit
 echo Done Building ---- Debug ----
 IF "%~1" == "run" GOTO RUNDEBUG
 IF "%~2" == "run" GOTO RUNDEBUG
