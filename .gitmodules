@@ -22,3 +22,7 @@
 	path = external/eigen
 	url = https://gitlab.com/libeigen/eigen
 	branch = master
+[submodule "external/spdlog"]
+	path = external/spdlog
+	url = https://github.com/gabime/spdlog
+	branch = v1.x
