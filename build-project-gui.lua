@@ -56,27 +56,38 @@ newaction {
         os.rmdir("./core/vk/bin")
         os.rmdir("./core/moc2/bin")
         os.rmdir("./external/bin")
+
         print("Removing object files")
         os.rmdir("./build")
         os.rmdir("./compile_commands")
         os.rmdir("./core/vk/build")
         os.rmdir("./core/moc2/build")
         os.rmdir("./external/build")
+
         print("Removing project files")
         os.rmdir("./.vs")
         os.remove("*.sln")
+
         os.remove("app/**.vcxproj")
         os.remove("app/**.vcxproj.filters")
         os.remove("app/**.vcxproj.user")
         os.remove("app/**.vcxproj.FileListAbsolute.txt")
         os.remove("app/**.make")
         os.remove("app/**Makefile")
+
         os.remove("core/**.vcxproj")
         os.remove("core/**.vcxproj.filters")
         os.remove("core/**.vcxproj.user")
         os.remove("core/**.vcxproj.FileListAbsolute.txt")
         os.remove("core/**.make")
         os.remove("core/**Makefile")
+
+        os.remove("external/*.vcxproj")
+        os.remove("external/*.vcxproj.filters")
+        os.remove("external/*.vcxproj.user")
+        os.remove("external/*.vcxproj.FileListAbsolute.txt")
+        os.remove("external/*.make")
+        os.remove("external/*Makefile")
         print("Done")
     end
 }
