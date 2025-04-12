@@ -5,7 +5,11 @@
 #include "vk/core/entry-point.h"
 #include "vk/core/procedure.h"
 
+#include "vk/ui/console.h"
+
 #include "imgui.h"
+
+#include <string_view>
 
 class MainProc : public vk::Procedure
 {
@@ -21,16 +25,27 @@ public:
 
     //- called every application frame after update
     virtual void render() override;
+
+private:
+    vk::ui::Console m_console;
+
 };
 
 void MainProc::attach()
 {
-    LOG_INFO("Hello, world!");
+    m_console.set_message_send_callback(
+        [&](std::string_view msg)
+        {
+            m_console.add_message_italic_tagged("input: ", msg);
+        }
+    );
+
+    LOG_INFO_TAG("MainProc::attach", "Hello, world!");
 }
 
 void MainProc::detach()
 {
-    LOG_INFO("Goodbye, world!");
+    LOG_INFO_TAG("MainProc::detach", "Goodbye, world!");
 }
 
 void MainProc::update(const double dt)
@@ -41,8 +56,8 @@ void MainProc::update(const double dt)
 void MainProc::render()
 {
     ImGui::ShowDemoWindow();
+    m_console.render();
 
-    
     // vk::Application& app = vk::Application::get();
     // app.close();
 
@@ -52,8 +67,8 @@ void MainProc::render()
 vk::Application* vk::create_application(int argc, char** argv)
 {
     //- define the application specification
-    vk::ApplicationSpecification ApplicationSpecification;
-    spec.title = "My Application";
+    vk::ApplicationSpecification spec;
+    spec.title = "vk Application";
 
     vk::Application* app = new vk::Application(spec);
     std::shared_ptr<MainProc> proc = std::make_shared<MainProc>();
