@@ -1,4 +1,4 @@
-project "vk-app" 
+project "vk-gui-app" 
     kind "ConsoleApp" 
     language "C++" 
     cppdialect "C++20" 
@@ -19,7 +19,6 @@ project "vk-app"
         -- core
         "../../%{IncludeDirs.vk}",
         "../../%{IncludeDirs.vk_gui}",
-        "../../%{IncludeDirs.vk_win}",
 
         -- external dependencies
         "../../%{IncludeDirs.eigen}",
@@ -28,6 +27,8 @@ project "vk-app"
         "../../%{IncludeDirs.imgui}",
         "../../%{IncludeDirs.implot}",
         "../../%{IncludeDirs.stb}",
+        "../../%{IncludeDirs.spdlog}",
+
 
     }
 
@@ -43,6 +44,7 @@ project "vk-app"
 
     defines {
         "_USE_MATH_DEFINES",
+        "SPDLOG_USE_STD_FORMAT"
     }
 
     filter "system:windows" 

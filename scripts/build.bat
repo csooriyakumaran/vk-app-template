@@ -29,17 +29,17 @@ GOTO DONE
 
 :RUNDEBUG
 echo Running ---- Debug ----
-call .\bin\Debug-windows-x86_64\vk-app\vk-app.exe 
+call .\bin\Debug-windows-x86_64\vk-gui-app\vk-gui-app.exe 
 GOTO DONE
 
 :RUNRELEASE
 echo Running ---- Release ----
-call .\bin\Release-windows-x86_64\vk-app\vk-app.exe
+call .\bin\Release-windows-x86_64\vk-gui-app\vk-gui-app.exe
 GOTO DONE
 
 :RUNDIST
 echo Running ---- Release ----
-call .\bin\Dist-windows-x86_64\vk-app\vk-app.exe
+call .\bin\Dist-windows-x86_64\vk-gui-app\vk-gui-app.exe
 GOTO DONE
 
 :CLEAN

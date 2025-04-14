@@ -8,6 +8,7 @@
 #include "vk/ui/console.h"
 
 #include "imgui.h"
+#include "implot.h"
 
 #include <string_view>
 
@@ -28,19 +29,26 @@ public:
 
 private:
     vk::ui::Console m_console;
+    vk::ui::ConsoleLog m_log;
 
 };
 
 void MainProc::attach()
 {
+    LOG_DEBUG_TAG("MainProc::attach", "Hello, world!");
+    LOG_INFO_TAG("MainProc::attach", "Hello, world!");
+    LOG_WARN_TAG("MainProc::attach", "Hello, world!");
+    LOG_ERROR_TAG("MainProc::attach", "Hello, world!");
+
     m_console.set_message_send_callback(
         [&](std::string_view msg)
         {
+            LOG_INFO(msg);
             m_console.add_message_italic_tagged("input: ", msg);
         }
     );
 
-    LOG_INFO_TAG("MainProc::attach", "Hello, world!");
+    m_console.add_message_italic_tagged("INFO", "Hello, World!");
 }
 
 void MainProc::detach()
@@ -56,7 +64,9 @@ void MainProc::update(const double dt)
 void MainProc::render()
 {
     ImGui::ShowDemoWindow();
+    ImPlot::ShowDemoWindow();
     m_console.render();
+    m_log.render();
 
     // vk::Application& app = vk::Application::get();
     // app.close();

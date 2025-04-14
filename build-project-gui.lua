@@ -3,7 +3,7 @@
 workspace 'vk-app'
     architecture 'x64'
     configurations { 'Debug', 'Release', 'Dist' }
-    startproject 'vk-app-gui'
+    startproject 'vk-gui-app'
 
 outputdir = '%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}'
 
@@ -21,6 +21,7 @@ IncludeDirs['imgui']  = 'external/imgui'
 IncludeDirs['implot'] = 'external/implot'
 IncludeDirs['eigen']  = 'external/eigen'
 IncludeDirs['stb']    = 'external/stb'
+IncludeDirs['spdlog'] = 'external/spdlog/include'
 
 
 -- external / third-party pre-compiled libraries
@@ -45,6 +46,7 @@ group ''
 
 group 'Application'
     include 'app/app-gui/build-app.lua'
+    include 'app/app-cli/build-app.lua'
 group ''
 
 newaction {
