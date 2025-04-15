@@ -8,15 +8,21 @@ project 'yaml-cpp'
 
     files 
     {
-        'src/**.h',
-        'src/**.cpp',
+        'yaml-cpp/src/**.h',
+        'yaml-cpp/src/**.cpp',
 
-        'include/**.h',
+        'yaml-cpp/include/**.h',
     }
 
     includedirs
     {
-        'include'
+        'yaml-cpp/include'
+    }
+
+    defines
+    {
+        'YAML_CPP_STATIC_DEFINE',
+        'YAML_CPP_NO_CONTRIB',
     }
 
     filter 'system:windows'
@@ -28,17 +34,17 @@ project 'yaml-cpp'
         systemversion 'latest'
         staticruntime 'off'
 
-    filter 'configuration:Debug'
+    filter 'configurations:Debug'
         runtime 'Debug'
         symbols 'on'
 
 
-    filter 'configuration:Release'
+    filter 'configurations:Release'
         runtime 'Release'
         symbols 'on'
         optimize 'full'
 
-    filter 'configuration:Dist'
+    filter 'configurations:Dist'
         runtime 'Release'
         symbols 'off'
         optimize 'full'

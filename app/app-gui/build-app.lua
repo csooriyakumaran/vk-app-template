@@ -28,7 +28,7 @@ project "vk-gui-app"
         "../../%{IncludeDirs.implot}",
         "../../%{IncludeDirs.stb}",
         "../../%{IncludeDirs.spdlog}",
-
+        "../../%{IncludeDirs.yamlcpp}",
 
     }
 
@@ -39,12 +39,15 @@ project "vk-gui-app"
 
         -- external dependencies
         "ImGui",
-        "ImPlot"
+        "ImPlot",
+        "yaml-cpp",
     }
 
     defines {
         "_USE_MATH_DEFINES",
-        "SPDLOG_USE_STD_FORMAT"
+        "SPDLOG_USE_STD_FORMAT",
+        'YAML_CPP_STATIC_DEFINE',
+        'YAML_CPP_NO_CONTRIB',
     }
 
     filter "system:windows" 
