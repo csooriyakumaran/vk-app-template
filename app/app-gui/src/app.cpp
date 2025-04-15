@@ -10,6 +10,8 @@
 #include "imgui.h"
 #include "implot.h"
 
+#include "yaml-cpp/yaml.h"
+
 #include <string_view>
 
 class MainProc : public vk::Procedure
@@ -35,6 +37,7 @@ private:
 
 void MainProc::attach()
 {
+    LOG_TRACE_TAG("MainProc::attach", "Hello, world!");
     LOG_DEBUG_TAG("MainProc::attach", "Hello, world!");
     LOG_INFO_TAG("MainProc::attach", "Hello, world!");
     LOG_WARN_TAG("MainProc::attach", "Hello, world!");
@@ -49,6 +52,23 @@ void MainProc::attach()
     );
 
     m_console.add_message_italic_tagged("INFO", "Hello, World!");
+
+    YAML::Node cfg = YAML::LoadFile("data/cfg.yaml");
+
+    if (cfg["string"])
+        LOG_INFO("string: {}", cfg["string"].as<std::string>());
+
+    if (cfg["float"])
+    {
+        LOG_INFO("float as f32: {}", cfg["float"].as<f32>());
+        LOG_INFO("float as f64: {}", cfg["float"].as<f64>());
+    }
+
+    if (cfg["exp"])
+    {
+        LOG_INFO("exp as f32: {}", cfg["exp"].as<f32>());
+        LOG_INFO("exp as f64: {}", cfg["exp"].as<f64>());
+    }
 }
 
 void MainProc::detach()
@@ -79,6 +99,8 @@ vk::Application* vk::create_application(int argc, char** argv)
     //- define the application specification
     vk::ApplicationSpecification spec;
     spec.title = "vk Application";
+    spec.theme = "light";
+    spec.icon_path = "res/ICON.png";
 
     vk::Application* app = new vk::Application(spec);
     std::shared_ptr<MainProc> proc = std::make_shared<MainProc>();
