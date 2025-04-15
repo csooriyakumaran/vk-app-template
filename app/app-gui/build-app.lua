@@ -63,7 +63,7 @@ project "vk-gui-app"
     filter "configurations:Release" 
         defines { "RELEASE" }
         runtime "Release" 
-        optimize "Off" 
+        optimize "Full" 
         symbols "On" 
 
     filter "configurations:Dist" 

@@ -15,13 +15,14 @@ IncludeDirs['vk_gui'] = 'core/vk/src-platform/gui'
 IncludeDirs['vk_win'] = 'core/vk/src-platform/windows'
 
 -- external libraries
-IncludeDirs['glfw']   = 'external/glfw/include'
-IncludeDirs['glad']   = 'external/glad/include'
-IncludeDirs['imgui']  = 'external/imgui'
-IncludeDirs['implot'] = 'external/implot'
-IncludeDirs['eigen']  = 'external/eigen'
-IncludeDirs['stb']    = 'external/stb'
-IncludeDirs['spdlog'] = 'external/spdlog/include'
+IncludeDirs['glfw']    = 'external/glfw/include'
+IncludeDirs['glad']    = 'external/glad/include'
+IncludeDirs['imgui']   = 'external/imgui'
+IncludeDirs['implot']  = 'external/implot'
+IncludeDirs['eigen']   = 'external/eigen'
+IncludeDirs['stb']     = 'external/stb'
+IncludeDirs['spdlog']  = 'external/spdlog/include'
+IncludeDirs['yamlcpp'] = 'external/yaml-cpp/include'
 
 
 -- external / third-party pre-compiled libraries
@@ -36,6 +37,7 @@ group 'Dependencies'
     include "external/build-glad.lua"
     include "external/build-imgui.lua"
     include "external/build-implot.lua"
+    include "external/build-yaml-cpp.lua"
 group ''
 
 
