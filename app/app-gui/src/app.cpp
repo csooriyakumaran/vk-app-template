@@ -99,7 +99,7 @@ vk::Application* vk::create_application(int argc, char** argv)
     //- define the application specification
     vk::ApplicationSpecification spec;
     spec.title = "vk Application";
-    spec.theme = "light";
+    spec.theme = "Aiolos";
     spec.icon_path = "res/ICON.png";
 
     vk::Application* app = new vk::Application(spec);
