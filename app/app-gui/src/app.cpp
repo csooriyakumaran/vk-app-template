@@ -13,6 +13,7 @@
 #include "yaml-cpp/yaml.h"
 
 #include <string_view>
+#include <format>
 
 class MainProc : public vk::Procedure
 {
@@ -88,6 +89,12 @@ void MainProc::render()
     m_console.render();
     m_log.render();
 
+    ImGuiIO& io = ImGui::GetIO();
+
+    if ( ImGui::IsKeyDown(ImGuiKey_ModCtrl) & ImGui::IsKeyPressed(ImGuiKey_Minus) )
+        io.FontGlobalScale -= 0.1f;
+    if ( ImGui::IsKeyDown(ImGuiKey_ModCtrl) & ImGui::IsKeyPressed(ImGuiKey_Equal) )
+        io.FontGlobalScale += 0.1f;
     // vk::Application& app = vk::Application::get();
     // app.close();
 
@@ -98,14 +105,40 @@ vk::Application* vk::create_application(int argc, char** argv)
 {
     //- define the application specification
     vk::ApplicationSpecification spec;
-    spec.title = "vk Application";
-    spec.theme = "Aiolos";
+    spec.title = "Application Name";
+
     spec.icon_path = "res/ICON.png";
+    spec.transparent = true;
+    spec.window_theme = vk::WindowTheme::System;
 
     vk::Application* app = new vk::Application(spec);
     std::shared_ptr<MainProc> proc = std::make_shared<MainProc>();
 
     app->load_procedure(proc);
+
+    app->set_menu_draw_fn([&](){
+        if (ImGui::BeginMenu("FILE"))
+        {
+
+            if (ImGui::MenuItem("Exit", "Alt-F4"))
+            {
+                app->close();
+            }
+
+            ImGui::EndMenu();
+        }
+    });
+
+    app->set_statusline_fn([&](){
+        ImGuiIO& io = ImGui::GetIO();
+        std::string status = std::format("Application average {:.3f} ms/frame ({:.1f} FPS)", 1000.0f/io.Framerate, 1.0f*io.Framerate);
+        ImGui::SetCursorPosX(
+            ImGui::GetCursorPosX() + ImGui::GetContentRegionAvail().x -
+            ImGui::CalcTextSize(status.c_str()).x - 7.0f
+        );
+        ImGui::Text(status.c_str());
+    });
+
 
     return app;
 }
