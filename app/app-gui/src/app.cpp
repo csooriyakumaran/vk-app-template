@@ -119,11 +119,8 @@ vk::Application* vk::create_application(int argc, char** argv)
     app->set_menu_draw_fn([&](){
         if (ImGui::BeginMenu("FILE"))
         {
-
             if (ImGui::MenuItem("Exit", "Alt-F4"))
-            {
                 app->close();
-            }
 
             ImGui::EndMenu();
         }
